@@ -1,0 +1,32 @@
+<div class="container d-flex flex-column align-items-center">
+  <div class="container-fluid text-center m-3 p-3">
+    <h1>New game</h1>
+    <div class="d-flex justify-content-center flex-wrap gap-3">
+    <% @letters.each do |letter| %>
+      <div class="letter-box btn btn-primary">
+        <%= letter %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+  <form action="<%= score_path %>" method="post" data-turbo="false" class="text-center w-50">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <h5 class="pt-2 pb-2">What is the longest word you can find?</h5>
+    <input type="text" class="form-control" name="word" placeholder="Type your word" required>
+    <button type="submit" class="btn btn-success mt-2">Play</button>
+  </form>
+</div>
+
+<style>
+  .letter-box {
+    font-size: 2rem; /* Make letters large */
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    text-transform: uppercase; /* Make letters uppercase */
+  }
+</style>
